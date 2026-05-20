@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent
 REQUIREMENTS_PATH = BASE_DIR / "requirements.txt"
 TRACKER_PATH = BASE_DIR / "tracker.py"
 APP_PATH = BASE_DIR / "app.py"
-JOB_FOCUS = [
+POLICY_FOCUS = [
     "Port Department policy and planning",
     "Maritime, supply chain, logistics, and transportation/distribution career pathways",
     "Federal, New York, and New Jersey legislation affecting PANYNJ and regional port operations",
@@ -130,7 +130,7 @@ def _job_relevance_note(row: pd.Series) -> str:
 
     if not notes:
         return "Relevant to Port Policy & Planning research, tracking, and briefing preparation."
-    return "This is useful for the internship because it " + "; ".join(notes) + "."
+    return "This matters because it " + "; ".join(notes) + "."
 
 
 def _render_file_inventory() -> None:
@@ -224,13 +224,13 @@ def main() -> None:
 
     st.caption(f"Last updated: {_last_updated_label()} | Auto-refreshes every 12 hours")
 
-    with st.expander("Internship Focus", expanded=True):
+    with st.expander("Policy Focus", expanded=True):
         st.write(
-            "This tracker is tailored for the Port Department high school summer internship, "
-            "where students support research, briefing preparation, and policy analysis related "
-            "to maritime, supply chain, logistics, and transportation/distribution issues."
+            "This tracker is tailored for Port Department research, briefing preparation, "
+            "and policy analysis related to maritime, supply chain, logistics, and "
+            "transportation/distribution issues."
         )
-        st.markdown("\n".join(f"- {item}" for item in JOB_FOCUS))
+        st.markdown("\n".join(f"- {item}" for item in POLICY_FOCUS))
 
     st.sidebar.header("Filters")
     priorities = sorted(df["priority"].dropna().unique().tolist())
@@ -283,7 +283,7 @@ def main() -> None:
     )
 
     st.subheader("High Priority Alerts")
-    st.caption("Each alert includes a plain-language summary and why it matters for Port Policy & Planning internship work.")
+    st.caption("Each alert includes a plain-language summary and why it matters for Port Policy & Planning work.")
     if alert_df.empty:
         st.info("No bills currently meet the high priority alert threshold under the selected filters.")
     else:
@@ -296,7 +296,7 @@ def main() -> None:
                 )
                 st.markdown("**Brief summary**")
                 st.write(row["summary_text"])
-                st.markdown("**Why it matters for this internship**")
+                st.markdown("**Why it matters for Port Policy & Planning**")
                 st.write(_job_relevance_note(row))
                 st.link_button("Open bill source", row["url"])
 
