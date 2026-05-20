@@ -1,11 +1,11 @@
 Daily Legislative Briefing
-Generated: 2026-05-19 23:26:21
+Generated: 2026-05-19 23:48:30
 
 Executive Summary
-- Total bills tracked: 22
+- Total bills tracked: 17
 - High priority bills: 4
-- Average relevance score: 63.9
-- Committees monitored: 11
+- Average relevance score: 69.4
+- Committees monitored: 8
 
 High Priority Bills
 - NY A11291: Relates to the organization of the Port Authority

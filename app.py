@@ -26,6 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent
 REQUIREMENTS_PATH = BASE_DIR / "requirements.txt"
 TRACKER_PATH = BASE_DIR / "tracker.py"
 APP_PATH = BASE_DIR / "app.py"
+JOB_FOCUS = [
+    "Port Department policy and planning",
+    "Maritime, supply chain, logistics, and transportation/distribution career pathways",
+    "Federal, New York, and New Jersey legislation affecting PANYNJ and regional port operations",
+    "Harbor, freight, cargo, working waterfront, clean port, and workforce development issues",
+]
 
 
 st.set_page_config(
@@ -101,6 +107,32 @@ def _read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def _job_relevance_note(row: pd.Series) -> str:
+    text = " ".join(
+        [
+            str(row.get("bill_title", "")),
+            str(row.get("summary_text", "")),
+            str(row.get("keywords", "")),
+            str(row.get("committee", "")),
+        ]
+    ).lower()
+    notes: list[str] = []
+    if any(term in text for term in ["workforce", "career", "training", "maritime workforce"]):
+        notes.append("connects to maritime and logistics career pathways")
+    if any(term in text for term in ["panynj", "port authority", "new york", "new jersey"]):
+        notes.append("has direct NY/NJ or Port Authority policy relevance")
+    if any(term in text for term in ["cargo", "freight", "logistics", "supply chain", "shipping"]):
+        notes.append("affects cargo movement, logistics, or supply chain planning")
+    if any(term in text for term in ["harbor", "navigation", "wrda", "water resources", "pidp", "port infrastructure"]):
+        notes.append("supports port infrastructure, harbor, or federal funding analysis")
+    if any(term in text for term in ["clean ports", "zero-emission", "resilience"]):
+        notes.append("relates to port modernization, resilience, or clean transportation")
+
+    if not notes:
+        return "Relevant to Port Policy & Planning research, tracking, and briefing preparation."
+    return "This is useful for the internship because it " + "; ".join(notes) + "."
+
+
 def _render_file_inventory() -> None:
     files = [
         (APP_PATH, "Streamlit dashboard"),
@@ -173,8 +205,8 @@ def _render_tracker_logic() -> None:
 
 def main() -> None:
     st.markdown(f"<meta http-equiv='refresh' content='{AUTO_REFRESH_SECONDS}'>", unsafe_allow_html=True)
-    st.title("Federal Legislative Tracking System")
-    st.caption("Port Authority of NY & NJ | Port Policy & Planning Unit | Business Solutions Division")
+    st.title("Port Policy & Planning Legislative Tracking System")
+    st.caption("Port Authority of NY & NJ | Port Department | Maritime, Supply Chain, Logistics, and Workforce Policy")
 
     try:
         df = _load_processed_data()
@@ -191,6 +223,14 @@ def main() -> None:
         return
 
     st.caption(f"Last updated: {_last_updated_label()} | Auto-refreshes every 12 hours")
+
+    with st.expander("Internship Focus", expanded=True):
+        st.write(
+            "This tracker is tailored for the Port Department high school summer internship, "
+            "where students support research, briefing preparation, and policy analysis related "
+            "to maritime, supply chain, logistics, and transportation/distribution issues."
+        )
+        st.markdown("\n".join(f"- {item}" for item in JOB_FOCUS))
 
     st.sidebar.header("Filters")
     priorities = sorted(df["priority"].dropna().unique().tolist())
@@ -243,6 +283,7 @@ def main() -> None:
     )
 
     st.subheader("High Priority Alerts")
+    st.caption("Each alert includes a plain-language summary and why it matters for Port Policy & Planning internship work.")
     if alert_df.empty:
         st.info("No bills currently meet the high priority alert threshold under the selected filters.")
     else:
@@ -253,6 +294,10 @@ def main() -> None:
                     f"Score {row['relevance_score']} | {row['status']} | "
                     f"{row['committee']} | Last action {_date_label(row['last_action_date'])}"
                 )
+                st.markdown("**Brief summary**")
+                st.write(row["summary_text"])
+                st.markdown("**Why it matters for this internship**")
+                st.write(_job_relevance_note(row))
                 st.link_button("Open bill source", row["url"])
 
     st.subheader("Full Legislative Dataset")
