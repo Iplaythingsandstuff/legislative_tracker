@@ -7,3 +7,54 @@
 
 [2026-05-19 22:44:40] Error tokenizing data. C error: Expected 9 fields in line 15, saw 10
 
+[2026-05-20 11:29:21] Refresh fetch failed for H.R.2390 (https://www.congress.gov/bill/119th-congress/house-bill/2390): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for S.1238 (https://www.congress.gov/bill/119th-congress/senate-bill/1238): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for H.R.6866 (https://www.congress.gov/bill/119th-congress/house-bill/6866): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for WRDA 2026 (https://www.congress.gov/event/119th-congress/house-event/118691): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for CRS IF13112 (https://www.congress.gov/crs-product/IF13112): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for S.1541 (https://www.congress.gov/bill/119th-congress/senate-bill/1541/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for H.R.3151 (https://www.congress.gov/bill/119th-congress/house-bill/3151/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for S.1968 (https://www.congress.gov/bill/119th-congress/senate-bill/1968/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for S.2243 (https://www.congress.gov/bill/119th-congress/senate-bill/2243/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for H. Rept. 119-212 (https://www.congress.gov/committee-report/119th-congress/house-report/212/1): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NY S10222 (https://www.nysenate.gov/legislation/bills/2025/S10222): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NY A11291 (https://legislation.nysenate.gov/pdf/bills/2025/A11291): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NY A10056 (https://www.nysenate.gov/legislation/bills/2025/A10056): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NY S6939 (https://www.nysenate.gov/legislation/bills/2025/S6939): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NJ S289 (https://pub.njleg.state.nj.us/Bills/2020/S0500/289_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NJ S4670 (https://pub.njleg.state.nj.us/Bills/2024/S5000/4670_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:21] Refresh fetch failed for NJ S3748 (https://pub.njleg.state.nj.us/Bills/2026/S4000/3748_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for H.R.2390 (https://www.congress.gov/bill/119th-congress/house-bill/2390): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for S.1238 (https://www.congress.gov/bill/119th-congress/senate-bill/1238): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for H.R.6866 (https://www.congress.gov/bill/119th-congress/house-bill/6866): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for WRDA 2026 (https://www.congress.gov/event/119th-congress/house-event/118691): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for CRS IF13112 (https://www.congress.gov/crs-product/IF13112): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for S.1541 (https://www.congress.gov/bill/119th-congress/senate-bill/1541/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for H.R.3151 (https://www.congress.gov/bill/119th-congress/house-bill/3151/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for S.1968 (https://www.congress.gov/bill/119th-congress/senate-bill/1968/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for S.2243 (https://www.congress.gov/bill/119th-congress/senate-bill/2243/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for H. Rept. 119-212 (https://www.congress.gov/committee-report/119th-congress/house-report/212/1): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NY S10222 (https://www.nysenate.gov/legislation/bills/2025/S10222): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NY A11291 (https://legislation.nysenate.gov/pdf/bills/2025/A11291): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NY A10056 (https://www.nysenate.gov/legislation/bills/2025/A10056): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NY S6939 (https://www.nysenate.gov/legislation/bills/2025/S6939): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NJ S289 (https://pub.njleg.state.nj.us/Bills/2020/S0500/289_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NJ S4670 (https://pub.njleg.state.nj.us/Bills/2024/S5000/4670_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:29:36] Refresh fetch failed for NJ S3748 (https://pub.njleg.state.nj.us/Bills/2026/S4000/3748_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for H.R.2390 (https://www.congress.gov/bill/119th-congress/house-bill/2390): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for S.1238 (https://www.congress.gov/bill/119th-congress/senate-bill/1238): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for H.R.6866 (https://www.congress.gov/bill/119th-congress/house-bill/6866): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for WRDA 2026 (https://www.congress.gov/event/119th-congress/house-event/118691): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for CRS IF13112 (https://www.congress.gov/crs-product/IF13112): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for S.1541 (https://www.congress.gov/bill/119th-congress/senate-bill/1541/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for H.R.3151 (https://www.congress.gov/bill/119th-congress/house-bill/3151/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for S.1968 (https://www.congress.gov/bill/119th-congress/senate-bill/1968/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for S.2243 (https://www.congress.gov/bill/119th-congress/senate-bill/2243/text): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for H. Rept. 119-212 (https://www.congress.gov/committee-report/119th-congress/house-report/212/1): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NY S10222 (https://www.nysenate.gov/legislation/bills/2025/S10222): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NY A11291 (https://www.nysenate.gov/legislation/bills/2025/A11291): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NY A10056 (https://www.nysenate.gov/legislation/bills/2025/A10056): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NY S6939 (https://www.nysenate.gov/legislation/bills/2025/S6939): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NJ S289 (https://pub.njleg.state.nj.us/Bills/2020/S0500/289_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NJ S4670 (https://pub.njleg.state.nj.us/Bills/2024/S5000/4670_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[2026-05-20 11:30:39] Refresh fetch failed for NJ S3748 (https://pub.njleg.state.nj.us/Bills/2026/S4000/3748_I1.HTM): <urlopen error [Errno 8] nodename nor servname provided, or not known>

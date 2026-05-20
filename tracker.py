@@ -46,6 +46,12 @@ PORT_KEYWORDS = {
     "bridge",
     "tunnel",
     "toll",
+    "freight rail",
+    "blue highways",
+    "last mile",
+    "commercial vehicle",
+    "truck route",
+    "green port",
 }
 
 TITLE_SUMMARY_TERMS = [
@@ -66,6 +72,14 @@ TITLE_SUMMARY_TERMS = [
     "transparency",
     "new york",
     "new jersey",
+    "freight rail",
+    "last mile",
+    "blue highways",
+    "zero-emission port operations",
+    "commercial vehicle",
+    "truck route",
+    "marine vessels",
+    "waterfront industrial",
 ]
 
 COMMITTEE_TERMS = [
@@ -80,6 +94,10 @@ COMMITTEE_TERMS = [
     "Labor",
     "Energy And Telecommunications",
     "Budget",
+    "Committee on Transportation and Infrastructure",
+    "Committee on Zoning and Franchises",
+    "Committee on Economic Development",
+    "New York City Council",
 ]
 
 ACTIVE_STATUS_TERMS = {
@@ -89,10 +107,15 @@ ACTIVE_STATUS_TERMS = {
     "passed assembly",
     "passed senate",
     "reported",
+    "reported committee",
     "advanced to third reading",
     "delivered to governor",
     "signed by governor",
     "enacted",
+    "passed council",
+    "committee",
+    "referred to committee",
+    "referred to comm by council",
 }
 
 EXCEL_COLUMN_ORDER = [
@@ -265,7 +288,7 @@ def _priority_explanation(row: pd.Series) -> str:
     if _contains_any(title_summary, TITLE_SUMMARY_TERMS):
         reasons.append("direct transportation, funding, authorization, or workforce relevance")
     if _contains_any(committee, COMMITTEE_TERMS):
-        reasons.append("relevant federal committee jurisdiction")
+        reasons.append("relevant federal, state, or local committee jurisdiction")
     if _contains_any(full_policy_text, ["wrda", "water infrastructure"]):
         reasons.append("WRDA or water infrastructure signal")
     if _contains_any(full_policy_text, ["new york", "new jersey", "panynj", "port authority"]):

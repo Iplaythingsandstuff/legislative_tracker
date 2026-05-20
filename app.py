@@ -27,11 +27,73 @@ REQUIREMENTS_PATH = BASE_DIR / "requirements.txt"
 TRACKER_PATH = BASE_DIR / "tracker.py"
 APP_PATH = BASE_DIR / "app.py"
 POLICY_FOCUS = [
-    "Port Department policy and planning",
-    "Maritime, supply chain, logistics, and transportation/distribution career pathways",
-    "Federal, New York, and New Jersey legislation affecting PANYNJ and regional port operations",
-    "Harbor, freight, cargo, working waterfront, clean port, and workforce development issues",
+    "Active and pending federal, state, and local measures affecting port policy and planning",
+    "Maritime, supply chain, logistics, freight rail, trucking, and transportation/distribution policy",
+    "PANYNJ, New York, New Jersey, and New York City actions affecting regional port operations",
+    "Harbor, cargo, working waterfront, clean port, intermodal, and workforce development issues",
 ]
+
+COVERAGE_ROWS = [
+    {
+        "Level": "Federal",
+        "Sources monitored": "Congress.gov, CRS, committee reports, appropriations and authorization measures",
+        "Policy coverage": "WRDA 2026, port infrastructure grants, maritime regulation, supply chain resilience, clean ports, workforce",
+    },
+    {
+        "Level": "New York State",
+        "Sources monitored": "New York State Senate and Assembly legislation pages",
+        "Policy coverage": "PANYNJ governance, capital planning, public notice, debt transparency, labor and authority oversight",
+    },
+    {
+        "Level": "New Jersey State",
+        "Sources monitored": "New Jersey Legislature bill text and status pages",
+        "Policy coverage": "PANYNJ oversight, transportation authorities, logistics workforce, commercial routes, maritime facilities",
+    },
+    {
+        "Level": "New York City",
+        "Sources monitored": "NYC Council Legistar legislation records",
+        "Policy coverage": "Freight rail, truck routing, last-mile facilities, blue highways, clean port operations, waterfront land use",
+    },
+]
+
+FORMAL_CSS = """
+<style>
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+        max-width: 1500px;
+    }
+    h1 {
+        color: #17324d;
+        font-weight: 750;
+        letter-spacing: 0;
+    }
+    h2, h3 {
+        color: #17324d;
+        font-weight: 700;
+    }
+    [data-testid="stMetric"] {
+        background: #f8fafc;
+        border: 1px solid #d9e2ec;
+        border-radius: 6px;
+        padding: 1rem;
+    }
+    [data-testid="stExpander"] {
+        border: 1px solid #d9e2ec;
+        border-radius: 6px;
+        background: #fbfcfe;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        border-color: #c9d6e2;
+        border-radius: 6px;
+        background: #ffffff;
+    }
+    .stButton a, .stDownloadButton button {
+        border-radius: 4px;
+        font-weight: 600;
+    }
+</style>
+"""
 
 
 st.set_page_config(
@@ -204,9 +266,10 @@ def _render_tracker_logic() -> None:
 
 
 def main() -> None:
+    st.markdown(FORMAL_CSS, unsafe_allow_html=True)
     st.markdown(f"<meta http-equiv='refresh' content='{AUTO_REFRESH_SECONDS}'>", unsafe_allow_html=True)
     st.title("Port Policy & Planning Legislative Tracking System")
-    st.caption("Port Authority of NY & NJ | Port Department | Maritime, Supply Chain, Logistics, and Workforce Policy")
+    st.caption("Port Authority of NY & NJ | Port Department | Federal, State, and Local Legislative Intelligence")
 
     try:
         df = _load_processed_data()
@@ -226,11 +289,23 @@ def main() -> None:
 
     with st.expander("Policy Focus", expanded=True):
         st.write(
-            "This tracker is tailored for Port Department research, briefing preparation, "
-            "and policy analysis related to maritime, supply chain, logistics, and "
-            "transportation/distribution issues."
+            "This tracker is designed for Port Department research, briefing preparation, "
+            "and policy analysis. It prioritizes active and pending public legislation "
+            "from federal, New York, New Jersey, and New York City sources that may affect "
+            "port operations, cargo movement, maritime infrastructure, logistics, workforce "
+            "pipelines, clean ports, and regional goods movement."
         )
         st.markdown("\n".join(f"- {item}" for item in POLICY_FOCUS))
+
+    with st.expander("Coverage Method", expanded=True):
+        st.write(
+            "The watchlist is built from public legislative sources and organized to capture "
+            "all known active or pending measures with a plausible effect on Port Authority "
+            "port policy, planning, operations, infrastructure, freight movement, and workforce "
+            "development. The CSV remains the source of record, so additional public bills can "
+            "be added without changing the dashboard code."
+        )
+        st.dataframe(pd.DataFrame(COVERAGE_ROWS), width="stretch", hide_index=True)
 
     st.sidebar.header("Filters")
     priorities = sorted(df["priority"].dropna().unique().tolist())

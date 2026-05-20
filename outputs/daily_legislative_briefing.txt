@@ -1,28 +1,52 @@
 Daily Legislative Briefing
-Generated: 2026-05-19 23:52:52
+Generated: 2026-05-20 13:19:30
 
 Executive Summary
-- Total bills tracked: 17
-- High priority bills: 4
-- Average relevance score: 69.4
-- Committees monitored: 8
+- Total bills tracked: 36
+- High priority bills: 10
+- Average relevance score: 69.3
+- Committees monitored: 14
 
 High Priority Bills
 - NY A11291: Relates to the organization of the Port Authority
   Score: 90 | Status: In Committee | Last action: 2026-05-15
-  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
-  URL: https://legislation.nysenate.gov/pdf/bills/2025/A11291
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://www.nysenate.gov/legislation/bills/2025/A11291
 - NY S10222: Relates to the organization of the Port Authority
   Score: 90 | Status: In Committee | Last action: 2026-05-07
-  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
   URL: https://www.nysenate.gov/legislation/bills/2025/S10222
+- NYC Int 0819-2026: Plan to increase freight rail operations and expand freight rail network
+  Score: 100 | Status: Committee | Last action: 2026-04-16
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact; active legislative movement.
+  URL: https://legistar.council.nyc.gov/LegislationDetail.aspx?GUID=83395820-53B2-44F2-BA8D-72F30065AE9E&ID=7984575
+- NJ S3790: Transportation authority reporting and Port Authority-related oversight
+  Score: 90 | Status: Introduced | Last action: 2026-04-10
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://pub.njleg.state.nj.us/Bills/2026/S4000/3790_I1.PDF
 - NJ S3748: South Jersey Transportation Authority membership and transportation scope
   Score: 90 | Status: Introduced | Last action: 2026-03-16
-  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
   URL: https://pub.njleg.state.nj.us/Bills/2026/S4000/3748_I1.HTM
+- NYC Int 0691-2026: Commercial vehicle parking and truck routing enforcement training
+  Score: 85 | Status: Referred to Committee | Last action: 2026-03-12
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; active legislative movement.
+  URL: https://legistar.council.nyc.gov/LegislationDetail.aspx?G=2FD004F1-D85B-4588-A648-0A736C77D6E3&GUID=7A0DBA27-CE5F-4225-9B00-DE117444B008&ID=7927486&Options=&Search=
+- NJ S3593: New Jersey Works Act pre-employment and work readiness training
+  Score: 100 | Status: Reported Committee | Last action: 2026-03-02
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact; active legislative movement.
+  URL: https://pub.njleg.state.nj.us/Bills/2026/S4000/3593_S1.HTM
+- NJ S3695: Transportation Authority of New Jersey governance and transfer act
+  Score: 90 | Status: Introduced | Last action: 2026-02-24
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://pub.njleg.state.nj.us/Bills/2026/S4000/3695_I1.HTM
+- NJ A4236: High-growth STEM and transportation logistics workforce update
+  Score: 90 | Status: Introduced | Last action: 2026-02-23
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://pub.njleg.state.nj.us/Bills/2026/A4500/4236_I1.HTM
 - H.R.2390: Maritime Supply Chain Security Act
   Score: 80 | Status: Passed House | Last action: 2025-06-10
-  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact; active legislative movement.
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal, state, or local committee jurisdiction; direct New York, New Jersey, or PANYNJ impact; active legislative movement.
   URL: https://www.congress.gov/bill/119th-congress/house-bill/2390
 
 Watchlist
