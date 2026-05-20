@@ -267,14 +267,32 @@ def main() -> None:
     st.dataframe(
         _format_dates(table_df),
         width="stretch",
+        height=520,
         hide_index=True,
+        column_order=[
+            "priority",
+            "relevance_score",
+            "bill_id",
+            "bill_title",
+            "chamber",
+            "committee",
+            "status",
+            "last_action_date",
+            "days_since_last_action",
+            "summary_text",
+            "keywords",
+            "url",
+        ],
         column_config={
+            "priority": st.column_config.TextColumn("Priority", width="medium"),
             "url": st.column_config.LinkColumn("Bill URL"),
             "relevance_score": st.column_config.ProgressColumn(
                 "Relevance score",
                 min_value=0,
                 max_value=100,
             ),
+            "summary_text": st.column_config.TextColumn("Summary", width="large"),
+            "keywords": st.column_config.TextColumn("Keywords", width="medium"),
         },
     )
 

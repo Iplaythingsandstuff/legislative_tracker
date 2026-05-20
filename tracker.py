@@ -5,6 +5,10 @@ from pathlib import Path
 from typing import Iterable
 
 import pandas as pd
+from openpyxl.formatting.rule import CellIsRule
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.utils import get_column_letter
+from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -89,6 +93,40 @@ ACTIVE_STATUS_TERMS = {
     "delivered to governor",
     "signed by governor",
     "enacted",
+}
+
+EXCEL_COLUMN_ORDER = [
+    "priority",
+    "relevance_score",
+    "bill_id",
+    "bill_title",
+    "chamber",
+    "committee",
+    "status",
+    "last_action_date",
+    "days_since_last_action",
+    "summary_text",
+    "keywords",
+    "url",
+]
+
+EXCEL_COLUMN_WIDTHS = {
+    "priority": 18,
+    "relevance_score": 16,
+    "bill_id": 16,
+    "bill_title": 42,
+    "chamber": 22,
+    "committee": 34,
+    "status": 28,
+    "last_action_date": 18,
+    "days_since_last_action": 22,
+    "summary_text": 72,
+    "keywords": 42,
+    "url": 58,
+    "metric": 34,
+    "value": 18,
+    "bill_count": 14,
+    "average_score": 16,
 }
 
 
@@ -316,16 +354,157 @@ def _summary_metrics(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def _excel_ready_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Order columns for analyst-friendly workbook viewing."""
+    ordered_columns = [column for column in EXCEL_COLUMN_ORDER if column in df.columns]
+    remaining_columns = [column for column in df.columns if column not in ordered_columns]
+    return df[ordered_columns + remaining_columns].copy()
+
+
+def _add_excel_table(worksheet, table_name: str) -> None:
+    if worksheet.max_row < 2 or worksheet.max_column < 1:
+        return
+    ref = f"A1:{get_column_letter(worksheet.max_column)}{worksheet.max_row}"
+    table = Table(displayName=table_name, ref=ref)
+    table.tableStyleInfo = TableStyleInfo(
+        name="TableStyleMedium2",
+        showFirstColumn=False,
+        showLastColumn=False,
+        showRowStripes=True,
+        showColumnStripes=False,
+    )
+    worksheet.add_table(table)
+
+
+def _style_excel_sheet(worksheet, *, table_name: str | None = None) -> None:
+    header_fill = PatternFill("solid", fgColor="1F4E78")
+    header_font = Font(color="FFFFFF", bold=True)
+    thin_border = Border(bottom=Side(style="thin", color="D9E2F3"))
+    hyperlink_font = Font(color="0563C1", underline="single")
+
+    worksheet.freeze_panes = "A2"
+    worksheet.sheet_view.showGridLines = False
+    worksheet.auto_filter.ref = worksheet.dimensions
+
+    for cell in worksheet[1]:
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        cell.border = thin_border
+
+    header_lookup = {
+        worksheet.cell(row=1, column=column_index).value: column_index
+        for column_index in range(1, worksheet.max_column + 1)
+    }
+
+    for column_index in range(1, worksheet.max_column + 1):
+        header = worksheet.cell(row=1, column=column_index).value
+        column_letter = get_column_letter(column_index)
+        worksheet.column_dimensions[column_letter].width = EXCEL_COLUMN_WIDTHS.get(str(header), 18)
+
+    for row in worksheet.iter_rows(min_row=2):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+            cell.border = thin_border
+        worksheet.row_dimensions[row[0].row].height = 54
+
+    for column_name in ("summary_text", "keywords"):
+        column_index = header_lookup.get(column_name)
+        if column_index:
+            for cell in worksheet.iter_cols(
+                min_col=column_index,
+                max_col=column_index,
+                min_row=2,
+                max_row=worksheet.max_row,
+            ):
+                for item in cell:
+                    item.alignment = Alignment(vertical="top", wrap_text=True)
+
+    url_column = header_lookup.get("url")
+    if url_column:
+        for cell in worksheet.iter_cols(
+            min_col=url_column,
+            max_col=url_column,
+            min_row=2,
+            max_row=worksheet.max_row,
+        ):
+            for item in cell:
+                if item.value:
+                    item.hyperlink = item.value
+                    item.font = hyperlink_font
+
+    date_column = header_lookup.get("last_action_date")
+    if date_column:
+        for cell in worksheet.iter_cols(
+            min_col=date_column,
+            max_col=date_column,
+            min_row=2,
+            max_row=worksheet.max_row,
+        ):
+            for item in cell:
+                item.number_format = "yyyy-mm-dd"
+
+    score_column = header_lookup.get("relevance_score")
+    if score_column:
+        column_letter = get_column_letter(score_column)
+        score_range = f"{column_letter}2:{column_letter}{worksheet.max_row}"
+        worksheet.conditional_formatting.add(
+            score_range,
+            CellIsRule(operator="greaterThanOrEqual", formula=["80"], fill=PatternFill("solid", fgColor="F4CCCC")),
+        )
+        worksheet.conditional_formatting.add(
+            score_range,
+            CellIsRule(operator="between", formula=["50", "79"], fill=PatternFill("solid", fgColor="FCE5CD")),
+        )
+        worksheet.conditional_formatting.add(
+            score_range,
+            CellIsRule(operator="lessThan", formula=["50"], fill=PatternFill("solid", fgColor="D9EAD3")),
+        )
+
+    priority_column = header_lookup.get("priority")
+    if priority_column:
+        for row_index in range(2, worksheet.max_row + 1):
+            cell = worksheet.cell(row=row_index, column=priority_column)
+            value = str(cell.value or "").upper()
+            if value == "HIGH PRIORITY":
+                cell.fill = PatternFill("solid", fgColor="CC0000")
+                cell.font = Font(color="FFFFFF", bold=True)
+            elif value == "MEDIUM PRIORITY":
+                cell.fill = PatternFill("solid", fgColor="F6B26B")
+                cell.font = Font(color="000000", bold=True)
+            elif value == "LOW PRIORITY":
+                cell.fill = PatternFill("solid", fgColor="B6D7A8")
+                cell.font = Font(color="000000", bold=True)
+
+    if table_name:
+        _add_excel_table(worksheet, table_name)
+
+
+def _style_summary_sheet(worksheet) -> None:
+    _style_excel_sheet(worksheet)
+    worksheet.freeze_panes = "A2"
+    for row_index in range(2, worksheet.max_row + 1):
+        if not worksheet.cell(row=row_index, column=1).value and not worksheet.cell(row=row_index, column=2).value:
+            worksheet.row_dimensions[row_index].height = 12
+
+
 def export_excel(df: pd.DataFrame) -> Path:
     """Export raw data, high priority bills, and summary metrics to Excel."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    high_priority = df[df["priority"] == "HIGH PRIORITY"].copy()
+    workbook_df = _excel_ready_df(df)
+    high_priority = _excel_ready_df(df[df["priority"] == "HIGH PRIORITY"].copy())
     summary_metrics = _summary_metrics(df)
 
     with pd.ExcelWriter(EXCEL_OUTPUT_PATH, engine="openpyxl") as writer:
-        df.to_excel(writer, sheet_name="Raw Data", index=False)
+        workbook_df.to_excel(writer, sheet_name="Raw Data", index=False)
         high_priority.to_excel(writer, sheet_name="High Priority Bills", index=False)
         summary_metrics.to_excel(writer, sheet_name="Summary Metrics", index=False)
+
+        workbook = writer.book
+        _style_excel_sheet(workbook["Raw Data"], table_name="RawDataTable")
+        _style_excel_sheet(workbook["High Priority Bills"], table_name="HighPriorityBillsTable")
+        _style_summary_sheet(workbook["Summary Metrics"])
+        workbook.active = workbook["High Priority Bills"] if len(high_priority) else workbook["Raw Data"]
 
     return EXCEL_OUTPUT_PATH
 
