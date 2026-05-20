@@ -127,7 +127,7 @@ def _last_updated_label() -> str:
 
 
 @st.cache_data(show_spinner=False, ttl=AUTO_REFRESH_SECONDS)
-def _load_processed_data() -> pd.DataFrame:
+def _load_processed_data(input_mtime: float) -> pd.DataFrame:
     raw = load_data()
     return process_legislation(raw)
 
@@ -272,7 +272,7 @@ def main() -> None:
     st.caption("Port Authority of NY & NJ | Port Department | Federal, State, and Local Legislative Intelligence")
 
     try:
-        df = _load_processed_data()
+        df = _load_processed_data(DATA_PATH.stat().st_mtime)
         _write_outputs(df)
     except DataValidationError as exc:
         st.error(f"Input data validation failed. {exc}")
