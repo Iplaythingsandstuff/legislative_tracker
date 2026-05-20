@@ -1,0 +1,29 @@
+Daily Legislative Briefing
+Generated: 2026-05-19 23:02:25
+
+Executive Summary
+- Total bills tracked: 22
+- High priority bills: 4
+- Average relevance score: 63.9
+- Committees monitored: 11
+
+High Priority Bills
+- NY A11291: Relates to the organization of the Port Authority
+  Score: 90 | Status: In Committee | Last action: 2026-05-15
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://legislation.nysenate.gov/pdf/bills/2025/A11291
+- NY S10222: Relates to the organization of the Port Authority
+  Score: 90 | Status: In Committee | Last action: 2026-05-07
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://www.nysenate.gov/legislation/bills/2025/S10222
+- NJ S3748: South Jersey Transportation Authority membership and transportation scope
+  Score: 90 | Status: Introduced | Last action: 2026-03-16
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact.
+  URL: https://pub.njleg.state.nj.us/Bills/2026/S4000/3748_I1.HTM
+- H.R.2390: Maritime Supply Chain Security Act
+  Score: 80 | Status: Passed House | Last action: 2025-06-10
+  Explanation: port, maritime, freight, or infrastructure keyword match; direct transportation, funding, authorization, or workforce relevance; relevant federal committee jurisdiction; direct New York, New Jersey, or PANYNJ impact; active legislative movement.
+  URL: https://www.congress.gov/bill/119th-congress/house-bill/2390
+
+Watchlist
+- No stalled but important bills are currently on the watchlist.
