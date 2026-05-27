@@ -86,7 +86,7 @@ FORMAL_CSS = """
     div[data-testid="stVerticalBlockBorderWrapper"] {
         border-color: #c9d6e2;
         border-radius: 6px;
-        background: #ffffff;
+        background: #fbfcfe;
     }
     .stButton a, .stDownloadButton button {
         border-radius: 4px;
